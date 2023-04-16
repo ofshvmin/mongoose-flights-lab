@@ -48,12 +48,38 @@ function show(req, res) {
     console.log(error)
     res.redirect('/flights/index')
   })
+}
 
+function edit(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    res.render('flights/edit', {
+      title: "Edit Flight",
+      flight: flight
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/flights/index')
+  })
+}
+
+function update(req, res) {
+  Flight.findByIdAndUpdate(req.params.flightId)
+  .then(flight => {
+    res.redirect('/flights')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/')
+  })
 }
 
 export {
   index,
   newFlight as new,
   create,
-  show
+  show,
+  edit,
+  update
 }

@@ -9,10 +9,10 @@ function index(req, res) {
       title: "Flights",
       flights: flights
     })
-    .catch(error => {
-      console.log(error)
-      res.redirect('/')
-    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/')
   })
 }  
 

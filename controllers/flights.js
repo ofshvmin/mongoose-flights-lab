@@ -7,9 +7,9 @@ function index(req, res) {
     .then(flights => {
     res.render('flights/index', {
       title: "Flights",
-      flights: flights
+      flights: flights.sort((a, b) => a.departs - b.departs)
+      })
     })
-  })
   .catch(error => {
     console.log(error)
     res.redirect('/')

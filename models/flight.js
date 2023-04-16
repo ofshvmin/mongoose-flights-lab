@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const flightSchema = new mongoose.Schema({
   airline: {
     type: String, 
-    enum: ['American', 'Southwest', 'American']
+    enum: ['American', 'Southwest', 'United']
   },
   airport: {
     type: String,
@@ -23,3 +23,9 @@ const flightSchema = new mongoose.Schema({
     }
   }
 })
+
+const Flight = mongoose.model('Flight', flightSchema)
+
+export {
+  Flight 
+}

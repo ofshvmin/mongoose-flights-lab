@@ -1,0 +1,30 @@
+<%- include("../partials/html-head") %>
+<link rel="stylesheet" href="/stylesheets/flights/forms.css">
+<%- include("../partials/nav") %>
+
+<main>
+  <%= title %>
+  <form action="/flights" id="new-form" method="POST">
+    <label for="airline-select">Airline</label>
+    <select name="airline" id="airline-select" required="true">
+      <option value="">--Select Airline--</option>
+      <option value="American">American</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+    </select>
+
+    <label for="flight-number-input">Flight Number:</label>
+    <input type="number" name="flightNo" id="flight-number-input" required="true" min="10" max="9999">
+   
+    <label for="airport-input">Airport:</label>
+    <input type="text" oninput="this.value = this.value.toUpperCase()" name="airport" id="airport-input" required="true" minlength="3" maxlength="3" pattern="AUS|DFW|DEN|LAX|SAN">
+   
+    <label for="departure-time-input">Departs</label>
+    <input type="datetime-local" name="departs" id="departure-time-input">
+
+    <button type="submit">Add Flight</button>
+  </form>
+
+
+</main>
+<%- include("../partials/footer") %>

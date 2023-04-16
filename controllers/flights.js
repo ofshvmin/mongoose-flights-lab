@@ -19,11 +19,12 @@ function index(req, res) {
 function newFlight(req, res) {
   const newFlight = new Flight()
   const dt = newFlight.departs
+  const localOffset = dt.getTimezoneOffset()
+  dt.setMinutes(dt.getMinutes() - localOffset)
   const departsDate = dt.toISOString().slice(0, 16)
   res.render('flights/new', {
     title: "Add Flight",
     departsDate
-    
   })
 }
 
@@ -58,9 +59,14 @@ function show(req, res) {
 function edit(req, res) {
   Flight.findById(req.params.flightId)
   .then(flight => {
+    const dt = flight.departs
+    const localOffset = dt.getTimezoneOffset()
+    dt.setMinutes(dt.getMinutes() - localOffset)
+    const departsDate = dt.toISOString().slice(0, 16)
     res.render('flights/edit', {
       title: "Edit Flight",
-      flight: flight
+      flight: flight,
+      departsDate
     })
   })
   .catch(error => {

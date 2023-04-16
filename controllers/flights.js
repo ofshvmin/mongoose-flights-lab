@@ -43,7 +43,6 @@ function create(req, res) {
 function show(req, res) {
   Flight.findById(req.params.flightId)
   .then(flight => {
-    console.log(flight)
     res.render('flights/show', {
       title: "Flight Details",
       flight,
@@ -78,13 +77,17 @@ function edit(req, res) {
 function update(req, res) {
   Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
   .then(flight => {
-    res.redirect('/flights')
+    res.render('flights/show', {
+      title: "Flight Details",
+      flight,
+    })
   })
   .catch(error => {
     console.log(error)
     res.redirect('/')
   })
 }
+
 
 function deleteFlight(req, res) {
   Flight.findByIdAndDelete(req.params.flightId)

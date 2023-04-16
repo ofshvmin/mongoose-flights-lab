@@ -17,13 +17,18 @@ function index(req, res) {
 }  
 
 function newFlight(req, res) {
+  const newFlight = new Flight()
+  const dt = newFlight.departs
+  const departsDate = dt.toISOString().slice(0, 16)
   res.render('flights/new', {
-    title: "Add Flight"
+    title: "Add Flight",
+    departsDate
     
   })
 }
 
 function create(req, res) {
+  console.log(req.body);
   Flight.create(req.body)
   .then(flight => {
     res.redirect('/flights')
@@ -35,12 +40,12 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  console.log('daaaaaaaaaaaaat body!!!!!!!!!', req.params)
   Flight.findById(req.params.flightId)
   .then(flight => {
+    console.log(flight)
     res.render('flights/show', {
       title: "Flight Details",
-      flight: flight
+      flight,
     })
 
   })
@@ -75,11 +80,23 @@ function update(req, res) {
   })
 }
 
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.flightId)
+  .then(flight=> {
+    res.redirect('/flights')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   newFlight as new,
   create,
   show,
   edit,
-  update
+  update,
+  deleteFlight as delete
 }

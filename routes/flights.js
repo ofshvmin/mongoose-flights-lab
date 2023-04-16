@@ -12,6 +12,8 @@ router.get('/index', flightsCtrl.index)
 // GET localhost:3000/flights/new
 router.get('/new', flightsCtrl.new)
 
+// GET localhost:3000/flights/:flightID
+router.get('/:flightId', flightsCtrl.show)
 
 // PUT localhost:3000/flights
 router.post('/', flightsCtrl.create)

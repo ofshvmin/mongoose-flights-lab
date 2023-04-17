@@ -6,16 +6,56 @@
 <!-- <title>Flight</title> -->
 
 <main>
-  <h1> <%= title %>  </h1>
-    <a href="/flights/<%= flight._id %>/edit">
-    </a>
-    <h2><%= flight.airline %> Airlines </h2>
-    <h2> Flight: <%= flight.flightNo %></h2>
-    <h3>Departing from: <%= flight.airport %></h3>
-    <h3>Departs: <%= flight.departs %></h3>
+  <h1> <%= title %> </h1>
+  <table>
+    <thead>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Airport</th>
+      <th>Departure Date and Time</th>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= flight.airline %></td>
+          <td><%= flight.flightNo %></td>
+          <td><%= flight.airport %></td>
+          <td><%= flight.departs %></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <span style="display: inline">
+      <a href="/flights/<%= flight._id %>/edit"><button>Edit</button></a>
+      <a href="/flights/"><button>Go Back</button></a>
+    </span>
     
-    <a href="/flights/<%= flight._id %>/edit"><button>Edit</button></a>
-    <a href="/flights/">Go back</a>
-</main>
-
-<%- include("../partials/footer") %>
+    <h2>Tickets</h2>
+    <form 
+    id=""
+    action="/flights/<%= flight._id %>/tickets"
+    method="POST"
+    >
+    <label for="seat-text">Seat:</label>
+    <input type="text" name="seat" id="seat-text">
+    <label for="price-text">Price:</label>
+    <input type="text" name="price" id="price-text">
+    <button type="submit">Add Ticket</button>
+    
+  </form>
+  
+  <table>
+    <thead>
+      <th>Seat</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+        <% flight.tickets.forEach(ticket => { %>
+        <tr>
+          <td><%= ticket.seat %></td>
+          <td><%= ticket.price %></td>    
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+  <%- include("../partials/footer") %>

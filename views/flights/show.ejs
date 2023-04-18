@@ -36,9 +36,9 @@
     method="POST"
     >
     <label for="seat-text">Seat:</label>
-    <input type="text" name="seat" id="seat-text">
-    <label for="price-text">Price:</label>
-    <input type="text" name="price" id="price-text">
+    <input type="text" name="seat" id="seat-text" pattern="[A-F][1-9]\d?" required>
+    <label for="price-text" >Price:</label>
+    <input type="text" name="price" id="price-text" required>
     <button type="submit">Add Ticket</button>
     
   </form>
@@ -47,15 +47,28 @@
     <thead>
       <th>Seat</th>
       <th>Price</th>
+      <th>Delete</th>
     </thead>
     <tbody>
         <% flight.tickets.forEach(ticket => { %>
         <tr>
           <td><%= ticket.seat %></td>
-          <td><%= ticket.price %></td>    
+          <td><%= ticket.price %></td>
+        
+          
+          <td>
+            <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>" 
+            method="POST"
+          >
+              <button type="submit">X</button>
+            </form>
+          </td>
+        
         </tr>
         <% }) %>
       </tbody>
     </table>
   </main>
   <%- include("../partials/footer") %>
+
+

@@ -123,6 +123,52 @@ function invalid(req, res) {
   res.render('flights/invalid', {title: "Error"})
   }
 
+
+// function experiment(req, res) { 
+//   Flight.findById(req.params.flightId).then(flight => flight.tickets.forEach(ticket => {
+    
+//   if(ticket.id === req.params.ticketId) {
+//     console.log(tickets.index)
+//   } else {console.log('no match')}
+  
+
+  
+//   } ) )}
+
+
+  function experiment(req, res) { 
+    Flight.findById(req.params.flightId).then(flight => {
+        console.log(index);
+        if(index !== -1) {
+          flight.tickets.splice(flight.tickets.indexOf((req.params.ticketId)), 1)
+          flight.save()
+          res.redirect(`/flights/${flight._id}`)
+        }
+      })
+
+    // if(ticket.id === req.params.ticketId) {
+    //   console.log(tickets.index)
+    // } else {console.log('no match')}
+    
+      
+    } 
+
+    // flight.tickets.forEach(ticket => {if(ticket._id === `new ObjectId("${req.params.ticketId}")`) {console.log('it matches')} })
+
+
+    // const index = flight.tickets.findIndex(item => item._id === `new ObjectId("${req.params.ticketId}")`)
+    
+    
+    // console.log(`new ObjectId("${req.params.ticketId}")`);
+
+    // if(index !== -1) {
+    //   flight.tickets.splice(index,1)
+    // flight.save()
+    // res.redirect(`/flights/${flight._id}`)
+    // }
+//   })
+// }
+
 export {
   index,
   newFlight as new,
@@ -132,5 +178,6 @@ export {
   update,
   deleteFlight as delete,
   createTicket,
-  invalid
+  invalid,
+  experiment
 }

@@ -18,7 +18,7 @@
     <input type="number" name="flightNo" id="flight-number-input" required="true" min="10" max="9999"  value="<%= flight.flightNo %>">
    
     <label for="airport-input">Airport:</label>
-    <input type="text" oninput="this.value = this.value.toUpperCase()" name="airport" id="airport-input" required="true" minlength="3" maxlength="3" pattern="AUS|DFW|DEN|LAX|SAN" value="<%= flight.airport %>">
+    <input type="text" oninput="this.value = this.value.toUpperCase()" name="airport" id="airport-input" required="true" minlength="3" maxlength="3" value="<%= flight.airport %>">
     
 
     <label for="departure-time-input">Departs</label>

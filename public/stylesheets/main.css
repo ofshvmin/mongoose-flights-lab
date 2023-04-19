@@ -40,6 +40,14 @@ body > main h1:first-child {
   margin-bottom: 50px;
 }
 
+#meals {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
 body > nav {
   grid-area: nav;
   background-color: #b8c0c2;

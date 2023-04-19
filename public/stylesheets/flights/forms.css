@@ -12,6 +12,16 @@ form {
   justify-items: center;
 }
 
+
+table {
+  margin-top: 24px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+}
+
 form * {
   padding: 5px;
   border-radius: 5px;

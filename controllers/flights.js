@@ -138,9 +138,12 @@ function deleteTicket(req, res) {
         })
       }   
     })
-    .then()
-    })
-  }
+  })
+  .catch((error) => {
+    console.log(error)
+    res.redirect('flights/invalid')
+  })
+}
 
 export {
   index,

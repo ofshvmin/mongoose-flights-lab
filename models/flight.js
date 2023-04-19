@@ -1,4 +1,7 @@
 import mongoose from "mongoose"
+import { Meal } from "./meal.js"
+
+const Schema = mongoose.Schema
 
 const ticketSchema = new mongoose.Schema({
   seat: {
@@ -33,7 +36,12 @@ const flightSchema = new mongoose.Schema({
       return new Date(new Date().setFullYear(new Date().getFullYear()+1))
     }
   },
-  tickets: [ticketSchema]
+  tickets: [ticketSchema],
+  meals: [{
+    type: Schema.Types.ObjectID,
+    ref: 'Meal'
+  }]
+
   
 })
 

@@ -51,7 +51,7 @@
       <th>Meal</th>
       <th>Save</th>
       <th>Delete</th>
-      <th>meal selection</th>
+      
     </thead>
     <tbody>
         <% flight.tickets.forEach(ticket => { %>
@@ -66,7 +66,7 @@
             <select name="mealId" id="meal-select">
               <option value="">--Select a Meal--</option>
               <% meals.forEach(meal => { %>
-              <option value="<%= meal._id %>" <%= ticket.meal._id === meal._id ? "selected" : "" %>> <%= meal.name  %> </option>
+              <option value="<%= meal._id %>" <%= ticket.meal._id.equals(meal._id) ? "selected" : "" %>> <%= meal.name  %> </option>
               <% }) %>
               
             </select>
@@ -79,7 +79,7 @@
           >
               <button type="submit">X</button>
             </form>
-            <td> <%= ticket.meal %></td>
+            
           </td>
         
         </tr>

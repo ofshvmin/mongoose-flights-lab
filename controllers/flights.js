@@ -131,7 +131,7 @@ function createTicket(req, res) {
 
 function invalid(req, res) {
   res.render('flights/invalid', {title: "Error"})
-  }
+}
 
 function deleteTicket(req, res) { 
   Flight.findById(req.params.flightId)
@@ -164,7 +164,7 @@ function updateTicket(req, res) {
         ticket.meal = req.body.mealId
         flight.save()
         .then(() => {
-          res.redirect('/flights')      
+          res.redirect(`/flights/${flight._id}`)      
         })
         .catch((error) => {
           console.log(error)
@@ -192,3 +192,10 @@ export {
   deleteTicket,
   updateTicket
 }
+
+
+// const mealCount = flight.tickets.reduce((op, val) => {
+//   op[val] = (op[val] || 0) + 1
+//   return op
+// }, {})
+// console.log('Meal Count: ',mealCount);

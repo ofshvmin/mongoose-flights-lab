@@ -48,9 +48,7 @@ function show(req, res) {
     Meal.find({})
     .then(meals => {
       meals.forEach(meal => {
-        console.log(meal.name)
       })
-      // console.log(meals);
       res.render('flights/show', {
         title: "Flight Details",
         flight,
@@ -161,16 +159,25 @@ function deleteTicket(req, res) {
 function updateTicket(req, res) {
   Flight.findById(req.params.flightId)
   .then(flight => {
-    flight.tickets.forEach((ticket, index) => {
+    flight.tickets.forEach((ticket) => {
       if(ticket.id === req.params.ticketId) {
-      ticket.meal = req.body.mealId
-      flight.save()
+        ticket.meal = req.body.mealId
+        flight.save()
+        .then(() => {
+          res.redirect('/flights')      
+        })
+        .catch((error) => {
+          console.log(error)
+          res.redirect('flights/invalid')
+        })
       }
-
     })
   })
+  .catch((error) => {
+    console.log(error)
+    res.redirect('flights/invalid')
+  })
 }
-
 
 export {
   index,

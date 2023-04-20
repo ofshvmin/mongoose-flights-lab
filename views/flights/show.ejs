@@ -43,10 +43,13 @@
     
   </form>
   
+  <h2>Reservations</h2>
   <table>
     <thead>
       <th>Seat</th>
       <th>Price</th>
+      <th>Meal</th>
+      <th>Save</th>
       <th>Delete</th>
     </thead>
     <tbody>
@@ -54,8 +57,24 @@
         <tr>
           <td><%= ticket.seat %></td>
           <td><%= ticket.price %></td>
-        
-          
+        <form 
+        action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>/?_method=PUT"
+        method="POST"
+        >
+          <td>
+            <select name="mealId" id="meal-select">
+              <option value="">--Select a Meal--</option>
+              <% meals.forEach(meal => { %>
+              <option 
+              value="<%= meal._id %>"
+              
+              
+              > <%= meal.name %> </option>
+              <% }) %>
+            </select>
+          </td>
+          <td><button type="submit"><i class="fas fa-check"></i></button></td>
+        </form>
           <td>
             <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>" 
             method="POST"

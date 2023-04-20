@@ -35,6 +35,9 @@ router.post('/:flightId/tickets', flightsCtrl.createTicket)
 // PUT localhost:3000/flights/:flightId
 router.put('/:flightId', flightsCtrl.update)
 
+// PUT localhost:3000/flights/:flightId/tickets/:ticketId
+router.put('/:flightId/tickets/:ticketId', flightsCtrl.updateTicket)
+
 // DELETE localhost:3000/flights/:flightID
 router.delete('/:flightId', flightsCtrl.delete)
 

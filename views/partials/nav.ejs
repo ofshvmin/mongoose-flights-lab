@@ -2,16 +2,17 @@
 <body>
   <nav>
     <i class="fas fa-plane-departure"></i>
+
+    <a href="/flights/index" class=<%= title === 'All Flights' ? 'active' : ''  %>
+      >
+        ALL FLIGHTS
+      </a>
     
     <a href="/flights/new" class=<%= title === 'Add Flight' ? 'active' : ''  %>
     >
       ADD FLIGHT
     </a>
     
-    <a href="/flights/index" class=<%= title === 'All Flights' ? 'active' : ''  %>
-      >
-        ALL FLIGHTS
-      </a>
     
       <a href="/meals" class=<%= title === 'Add Meal' ? 'active' : ''  %>
       >

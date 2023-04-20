@@ -11,6 +11,10 @@ const ticketSchema = new mongoose.Schema({
   price: {
     type: Number,
     min: 0
+  },
+  meal: {
+    type: Schema.Types.ObjectID,
+    ref: 'Meal',
   }
 })
 
@@ -37,12 +41,10 @@ const flightSchema = new mongoose.Schema({
     }
   },
   tickets: [ticketSchema],
-  meals: [{
+  mealOptions: [{
     type: Schema.Types.ObjectID,
     ref: 'Meal'
   }]
-
-  
 })
 
 const Flight = mongoose.model('Flight', flightSchema)

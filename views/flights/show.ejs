@@ -66,9 +66,12 @@
             <select name="mealId" id="meal-select">
               <option value="">--Select a Meal--</option>
               <% meals.forEach(meal => { %>
-              <option value="<%= meal._id %>" <%= ticket.meal._id.equals(meal._id) ? "selected" : "" %>> <%= meal.name  %> </option>
+                  <% if(ticket.meal) { %>
+                              <option value="<%= meal._id %>" <%= ticket.meal._id.equals(meal._id) ? "selected" : "" %> > <%= meal.name  %> </option>
+                  <% } else { %>
+                              <option value="<%= meal._id %>" <%= meal._id %> > <%= meal.name  %> </option>
+                  <% } %>
               <% }) %>
-              
             </select>
           </td>
           <td><button type="submit"><i class="fas fa-check"></i></button></td>
@@ -86,7 +89,24 @@
         <% }) %>
       </tbody>
     </table>
+
+
+    <!-- <button data-modal-target="modal">Open Modal</button>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="title">Example Modal</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+    <div class="modal-body">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ut rerum enim, tempore dignissimos aperiam est inventore incidunt dolores deserunt eveniet totam soluta! Iste accusantium dicta temporibus nulla ut hic.
+    </div>
+    </div>
+    <div id="overlay"></div>
+    
+    </section> -->
+
   </main>
   <%- include("../partials/footer") %>
 
 
+  
